@@ -6,80 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>SportsCharts. | Login</title>
 
     <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilos.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
+    <header>
+        <div><span class="verde">Sports</span><span class="branco">Charts.</span></div>
+        <a href="">Inscreva-se</a>
+    </header>
 
-    <!--Header-->
-
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">AquaTech</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
-            </ul>
+    <div class="container">
+        <div class="esquerda">
+            <h1>
+                <span class="verde">Sports</span><span class="branco">Charts.</span>
+            </h1>
+            <p>
+                <span class="verde">Entenda</span> o que o<br>
+                <span class="verde">mundo</span> dos<br>
+                <span class="verde">esportes</span> assiste<br>
+                através de<br>
+                <span class="verde">gráficos</span>.
+            </p>
         </div>
-    </div>
-
-
-    <div class="login">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
+        <div class="direita">
+            <h1>Faça Login</h1>
+            <form>
                 <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email_input" placeholder="Digite seu email">
                 </div>
-
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                <div class="formulario">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha_input" placeholder="Ditie sua senha">
                 </div>
-
-                <div id="div_erros_login"></div>
-            </div>
+                <div class="esqueci-senha">Esqueci minha senha</div>
+                <div class="acoes">
+                    <button class="entrar-login">Entrar</button>
+                    <a href="" class="botao-inscrever">Inscreva-se</a>
+                </div>
+            </form>
         </div>
-    </div>
-
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-            <span class="version">v1.0.0</span>
-        </div>
-    </div>
-    <!--footer fim-->
-
 </body>
 
 </html>

@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #182527;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    border-bottom: 5px solid white;
+}
+
+header a, span {
+    color: #20cd8d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.esquerda {
+    width: 50%;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 8%;
+}
+
+.esquerda h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 2.3rem;
+
+}
+
+.esquerda p {
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+}
+
+.direita {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.direita h1 {
+    margin-left: 23%;
+    padding: 30px;
+}
+
+.formulario {
+    margin-bottom: 1.5rem;
+    margin-right: 30%;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #20cd8d;
+    font-weight: 700;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+.esqueci-senha {
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    margin-right: 30%;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.acoes button {
+    background-color: #20cd8d;
+    border: none;
+    border-radius: 20px;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.acoes a.botao-inscrever {
+    color: #20cd8d;
+    font-weight: bold;
+}
+
+.acoes .login {
+    background: none;
+    color: #20cd8d;
+}
+
+.verde {
+    color: #20cd8d;
+    font-weight: bold;
+}
+
+.branco {
+    color: white;
+}
