@@ -70,14 +70,14 @@ header a, span {
 }
 
 .direita h1 {
-    text-align:start;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    text-align: start;
+    padding: 30px;
 }
 
 .formulario {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     margin-right: 30%;
+
 }
 
 label {
@@ -190,7 +190,13 @@ input {
 }
 
 .formulario-cadastro {
-    margin-right: 25%;
     margin-bottom: 1.5rem;
 }
+
+.formulario-cadastro p {
+    color: #20cd8d;
+    margin-left: 15px;
+}
+
+
 
