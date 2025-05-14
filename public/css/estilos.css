@@ -75,11 +75,6 @@ header a, span {
     margin-bottom: 30px;
 }
 
-.formulario {
-    margin-bottom: 0.5rem;
-    margin-right: 30%;
-}
-
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -88,7 +83,7 @@ label {
 }
 
 input {
-    width: 100%;
+     width: 100%;
     padding: 0.75rem;
     border-radius: 50px;
     border: none;
@@ -189,8 +184,15 @@ input {
     color: white;
 }
 
-.formulario-cadastro {
-    margin-right: 25%;
+.formulario {
+    margin-right: 42%;
     margin-bottom: 1.5rem;
+    
+}
+
+.formulario p {
+    margin-left: 15px;
+    color:#20cd8d;
+    font-weight: bold;
 }
 
