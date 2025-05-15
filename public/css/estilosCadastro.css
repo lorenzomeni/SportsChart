@@ -10,7 +10,6 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 
 header {
@@ -46,18 +45,18 @@ header a, span {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 8%;
+    margin-left: 3.5rem;
 }
 
 .esquerda h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 900;
-    margin-bottom: 2.3rem;
+    margin-bottom: 2rem;
 
 }
 
 .esquerda p {
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 2.8rem;
 }
 
@@ -71,14 +70,8 @@ header a, span {
 
 .direita h1 {
     text-align:start;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.formulario {
-    margin-bottom: 1rem;
-    margin-right: 30%;
-
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 label {
@@ -190,14 +183,14 @@ input {
     color: white;
 }
 
-.formulario-cadastro {
-    margin-right: 20%;
+.formulario {
+    margin-right: 6rem;
     margin-bottom: 1.5rem;
 }
 
-.formulario-cadastro p {
+.formulario p {
     color: #20cd8d;
-    margin-left: 15px;
+    margin-left: 1.1rem;
     font-weight: bold;
 }
 

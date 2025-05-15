@@ -46,18 +46,18 @@ header a, span {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 8%;
+    margin-left: 3.5rem
 }
 
 .esquerda h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 900;
-    margin-bottom: 2.3rem;
+    margin-bottom: 2rem;
 
 }
 
 .esquerda p {
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 2.8rem;
 }
 
@@ -71,8 +71,8 @@ header a, span {
 
 .direita h1 {
     text-align:start;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 label {
@@ -185,13 +185,12 @@ input {
 }
 
 .formulario {
-    margin-right: 42%;
+    margin-right: 13rem;
     margin-bottom: 1.5rem;
-    
 }
 
 .formulario p {
-    margin-left: 15px;
+    margin-left: 1.1rem;
     color:#20cd8d;
     font-weight: bold;
 }
