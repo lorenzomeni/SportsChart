@@ -32,42 +32,65 @@
     <div class="container">
         <div class="esquerda">
             <h1><span class="verde">Descubra</span> o que o mundo dos <span class="verde">esportes</span> está assistindo!</h1>
-            <p>Analise estatísticas e tendências de consumo esportivo com gráficos dinâmicos e atualizados.</p>
-            <a href="cadastro.html" class="botao">Cadastre-se Agora</a>
+            <p>Analise estatísticas de consumo esportivo com gráficos dinâmicos e atualizados.</p><br>
+            <a href="cadastro.html" class="botao">Acessar Dashboard</a>
         </div>
         
         <div class="direita">
-            <img src="./assets/sports-analytics.png" alt="Gráficos de análise esportiva" width="100%">
+            <img src="./assets/imgs/grafico-home.png" alt="Gráficos de análise esportiva" width="100%">
         </div>
     </div>
 
-    <!-- Seção Benefícios -->
-    <div class="container">
-        <div class="card">
-            <h2 class="verde">Por que usar o SportsCharts?</h2>
-            <ul>
-                <li>✅ Dados atualizados sobre transmissões esportivas</li>
-                <li>✅ Análises visuais simples e intuitivas</li>
-                <li>✅ Plataforma interativa e personalizada</li>
-            </ul>
-        </div>
+   <!-- Seção Benefícios -->
+<div class="container">
+    <div class="card">
+        <h2 class="verde">Por que usar o SportsCharts?</h2>
+        <ul id="beneficios-lista" style="display: none;">
+            <li> Dados atualizados sobre transmissões esportivas</li>
+            <li> Análises visuais simples e intuitivas</li>
+            <li> Plataforma interativa e personalizada</li>
+        </ul>
+        <button id="botao-beneficios" onclick="mostrarLista('beneficios-lista', 'botao-beneficios')">
+            Mostrar benefícios
+        </button>
     </div>
 
-    <!-- Seção Valores -->
-    <div class="container valores">
-      <h2 class="verde">Nossos Valores</h2>
-        <div class="valor-item">
-          <h3>Acessibilidade da Informação</h3>
-          <p>Dados apresentados ao cliente de forma simples, visual e intuitiva.</p>
-        </div>
-        <div class="valor-item">
-          <h3>Interatividade</h3>
-          <p>Nosso modelo de site permite que o cliente, além de visualizar informações, possa interagir com o gráfico a partir de seus próprios dados inseridos.</p>
-        </div>
-        <div class="valor-item">
-          <h3>Aprendizado</h3>
-          <p>Valorizamos o aprendizado, onde pessoas podem estimular o conhecimento por meio de dados e tecnologia.</p>
-        </div>
+    <div class="card">
+        <h2 class="verde">É seguro usar o SportsCharts?</h2>
+        <ul id="seguranca-lista" style="display: none;">
+            <li> Informações pessoais guardadas em local seguro</li>
+            <li> Banco de dados resistente</li>
+            <li> Organização que se preocupa com a segurança do cliente</li>
+        </ul>
+        <button id="botao-seguranca" onclick="mostrarLista('seguranca-lista', 'botao-seguranca')">
+            Mostrar segurança
+        </button>
+    </div>
+</div>
+
+
+
+
+
+    <!-- Seção Valores (SUJEITA A ALTERAÇÕES)-->
+<div class="container valores">    
+    <div class="valor-item">
+        <h3>Respeito</h3>
+        <p>Um dos aspectos mais importantes que o esporte promove é o respeito. Foi através do esporte que me tornei uma pessoa melhor.</p>
+    </div>
+    <div class="valor-item">
+        <h3>Trabalho em equipe</h3>
+        <p>O trabalho em equipe é importante na maioria das áreas de atuação. Graças ao esporte, sempre tive muito contato com equipes
+           e aprendi a me adaptar e trabalhar com elas.</p>
+    </div>
+    <div class="valor-item">
+         <h3>Habilidades Sociais</h3>
+          <p>Desenvolver a capacidade de se comunicar, liderar e interagir com outros de forma positiva. </p>
+    </div>
+</div>
+
+          
+        
     </div>
 
     <!-- Seção Sobre o Autor -->
@@ -75,14 +98,15 @@
       <div class="texto">
         <h2 class="verde">Sobre o Autor</h2>
           <p>
-            Sou [Seu Nome], criador do SportsCharts. Meu objetivo com este projeto é apresentar dados esportivos de maneira 
-            visual e intuitiva, permitindo aos usuários explorar informações e interagir com gráficos de forma dinâmica. 
+            Sou o Lorenzo Meni Rodrigues, estudante da faculdade de tecnologia SPTech School e criador do SportsCharts. Meu objetivo com este projeto é apresentar dados esportivos de maneira 
+            visual e intuitiva, permitindo aos usuários explorar informações e interagir com gráficos de forma dinâmica, procurando explorar um pouco mais desse mundo dos esportes, mundo esse 
+            que mudou minha vida por completo. 
             Acredito que através da tecnologia e da análise de dados, podemos enriquecer o aprendizado e a acessibilidade 
             do conhecimento esportivo.
           </p>
       </div>
         <div class="foto-autor">
-          <img src="./assets/autor.jpg" alt="Foto do autor">
+          <img src="./assets/imgs/foto-autor.jpg" alt="Foto do autor">
         </div>
     </div>
 
@@ -95,3 +119,25 @@
 </body>
 
 </html>
+
+<script>
+ function mostrarLista(listaId, botaoId) {
+    var lista = document.getElementById(listaId);
+    var itens = lista.getElementsByTagName("li");
+    var botao = document.getElementById(botaoId);
+
+    // Exibir a lista
+    lista.style.display = "block";
+
+    // Adicionar o emoji ✅ às linhas da lista
+    for (let i = 0; i < itens.length; i++) {
+        if (!itens[i].innerHTML.startsWith("✅")) {
+            itens[i].innerHTML = "✅ " + itens[i].innerHTML;
+        }
+    }
+
+    // Remover o botão após o clique
+    botao.style.display = "none";
+}
+
+</script>

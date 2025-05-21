@@ -11,7 +11,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* HEADER */
@@ -19,25 +19,38 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0rem;
-    border-bottom: 5px solid white;
+    padding: 1.5rem 3rem;
+    border-bottom: 4px solid white;
+    background-color: #1e2d2f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .header .titulo {
-    font-size: 2rem;
+    font-size: 2.8rem;
     font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.header .titulo:hover {
+    color: #20cd8d;
 }
 
 .navbar {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .navbar a {
     color: #20cd8d;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffffff;
 }
 
 /* SEÇÃO PRINCIPAL */
@@ -46,7 +59,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem;
+    padding: 4rem 8rem;
 }
 
 .esquerda {
@@ -54,98 +67,122 @@ body {
 }
 
 .esquerda h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 700;
-    margin-bottom: 1rem;
     color: #20cd8d;
+    margin-bottom: 1.5rem;
+    text-shadow: 0px 4px 10px rgba(32, 205, 141, 0.5);
 }
 
 .esquerda p {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
+    line-height: 2.4rem;
+}
+
+.direita img {
+    width: 40vw;
 }
 
 .botao {
     display: inline-block;
     background-color: #20cd8d;
     color: black;
-    padding: 0.8rem 2rem;
-    border-radius: 10px;
-    font-size: 1.2rem;
+    padding: 1rem 2.8rem;
+    border-radius: 12px;
+    font-size: 1.4rem;
     font-weight: bold;
     text-decoration: none;
-    margin-top: 1rem;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
 }
 
 .botao:hover {
-    box-shadow: 0 0 15px #20cd8d88, 0 0 25px #20cd8d55;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #20cd8d88;
 }
 
 /* SEÇÃO BENEFÍCIOS */
 .card {
+    width: 100%;
     background-color: #1e2d2f;
-    padding: 2rem;
-    border-radius: 10px;
+    padding: 3rem;
+    border-radius: 15px;
     text-align: center;
-    margin-top: 2rem;
+    margin: 1.5rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 .card h2 {
     color: #20cd8d;
     margin-bottom: 1rem;
+    font-size: 2.2rem;
 }
 
 .card ul {
     list-style: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .card ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#botao-beneficios, #botao-seguranca {
+    background-color: #20cd8d;
+    border: none;
+    border-radius: 22px;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+#botao-beneficios:hover, #botao-seguranca:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #20cd8d88;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
     background-color: #1e2d2f;
-    margin-top: 2rem;
-}
-
-footer p {
-    font-size: 1rem;
-    color: white;
+    font-size: 1.3rem;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Seção Valores */
 .valores {
     text-align: center;
-    background-color: #1e2d2f;
-    padding: 3rem;
-    border-radius: 10px;
+    background-color: #ffffff10;
+    padding: 7rem;
+    border-radius: 15px;
     margin-top: 2rem;
 }
 
 .valores h2 {
     color: #20cd8d;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
 }
 
 .valor-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .valor-item h3 {
     color: #20cd8d;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin-bottom: 0.5rem;
 }
 
 .valor-item p {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    color: #ccc;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
 }
 
 
@@ -154,10 +191,11 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem;
+    padding: 5rem;
     background-color: #1e2d2f;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 2rem;
+    box-shadow: 0 0 20px rgba(32, 205, 141, 0.3);
 }
 
 .texto {
@@ -166,13 +204,13 @@ footer p {
 
 .texto h2 {
     color: #20cd8d;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
 }
 
 .texto p {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
 }
 
 .foto-autor {
@@ -183,7 +221,7 @@ footer p {
 
 .foto-autor img {
     width: 100%;
-    max-width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #20cd8d55;
+    max-width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #20cd8d55;
 }
