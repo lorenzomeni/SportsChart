@@ -45,14 +45,10 @@
 <div class="container">
     <div class="card">
         <h2 class="verde">Por que usar o SportsCharts?</h2>
-        <ul id="beneficios-lista" style="display: none;">
-            <li> Dados atualizados sobre transmissões esportivas</li>
-            <li> Análises visuais simples e intuitivas</li>
-            <li> Plataforma interativa e personalizada</li>
-        </ul>
-        <button id="botao-beneficios" onclick="mostrarLista('beneficios-lista', 'botao-beneficios')">
+        <button id="botao-beneficios" onclick="mostrarLista()">
             Mostrar benefícios
         </button>
+        <div id="mensagem"></div>
     </div>
 
     <div class="card">
@@ -62,9 +58,10 @@
             <li> Banco de dados resistente</li>
             <li> Organização que se preocupa com a segurança do cliente</li>
         </ul>
-        <button id="botao-seguranca" onclick="mostrarLista('seguranca-lista', 'botao-seguranca')">
+        <button id="botao-seguranca" onclick="mostrarLista2()">
             Mostrar segurança
         </button>
+        <div id="mensagem2"></div>
     </div>
 </div>
 
@@ -121,23 +118,38 @@
 </html>
 
 <script>
- function mostrarLista(listaId, botaoId) {
-    var lista = document.getElementById(listaId);
-    var itens = lista.getElementsByTagName("li");
-    var botao = document.getElementById(botaoId);
+    var beneficios = ['Dados atualizados sobre transmissões esportivas', 'Análises visuais simples e intuitivas', 'Plataforma interativa e personalizada' ];
+    var segurancas = ['Informações pessoais guardadas em local seguro',' Banco de dados resistente', 'Organização que se preocupa com a segurança do cliente'];
+    
+    
+ function mostrarLista() {
+        var exibir = 0
+        if (exibir == 0) {
+            for (var contador = 0; contador < beneficios.length; contador++) {
+            mensagem.innerHTML += `${contador + 1} - ${beneficios[contador]}<br>`
+            exibir++
+            }
+        } else {
 
-    // Exibir a lista
-    lista.style.display = "block";
-
-    // Adicionar o emoji ✅ às linhas da lista
-    for (let i = 0; i < itens.length; i++) {
-        if (!itens[i].innerHTML.startsWith("✅")) {
-            itens[i].innerHTML = "✅ " + itens[i].innerHTML;
         }
+    
+}
+
+function mostrarLista2() {
+        var exibir2 = 0
+        if (exibir2 == 0) {
+            for (var contador = 0; contador < segurancas.length; contador++) {
+            mensagem2.innerHTML += `${contador + 1} - ${segurancas[contador]}<br>`
+            exibir2++    
+            }
+        } else {
+
+        }
+        
+
+
+        
     }
 
-    // Remover o botão após o clique
-    botao.style.display = "none";
-}
 
 </script>

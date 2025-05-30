@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #182527;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.container {
+    background-color: #1e2d2f;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 40%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h2, h3 {
+    color: #20cd8d;
+    font-weight: bold;
+}
+
+select, input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+button {
+    background-color: #20cd8d;
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 1rem auto;
+}
+
+button:hover {
+    box-shadow: 0 0 20px #20cd8d88, 0 0 30px #20cd8d55;
+}
+
+a {
+    color: #20cd8d;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}

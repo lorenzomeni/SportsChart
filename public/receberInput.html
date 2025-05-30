@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso à Dashboard | SportsCharts</title>
+    <link rel="stylesheet" href="../public/css/receberInput.css">
+</head>
+<body>
+    <div class="titulo">
+        <h2>Antes de prosseguir, responda:</h2>
+    </div>
+    
+    <div class="container">
+        <h3>Qual esporte você mais assiste?</h3>
+        <label for="lista-esportes"></label>
+        <select name="escolher-esportes" id="lista-esportes">
+            <option value="futebol">Futebol</option>
+            <option value="basquete">Basquete</option>
+            <option value="volei">Vôlei</option>
+            <option value="criquete">Críquete</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <h3>Quantas horas por dia você assiste esse esporte?</h3>
+        <input type="number" id="qtd_horas_assistidas" placeholder="Digite a quantidade de horas">
+    </div>
+
+    <button onclick="avancar()">Prosseguir</button>
+    <a href="index.html">Voltar</a>
+</body>
+</html>

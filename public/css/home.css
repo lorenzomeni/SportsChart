@@ -102,6 +102,11 @@ body {
 }
 
 /* SEÇÃO BENEFÍCIOS */
+
+#mensagem, #mensagem2 {
+    font-size: large;
+}
+
 .card {
     width: 100%;
     background-color: #1e2d2f;
