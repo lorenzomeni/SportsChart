@@ -9,7 +9,7 @@
     <title>SportsCharts | Home</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/index.css">
 
 </head>
 
@@ -33,7 +33,7 @@
         <div class="esquerda">
             <h1><span class="verde">Descubra</span> o que o mundo dos <span class="verde">esportes</span> está assistindo!</h1>
             <p>Analise estatísticas de consumo esportivo com gráficos dinâmicos e atualizados.</p><br>
-            <a href="cadastro.html" class="botao">Acessar Dashboard</a>
+            <a href="receberInput.html" class="botao">Acessar Dashboard</a>
         </div>
         
         <div class="direita">
@@ -124,6 +124,7 @@
     
  function mostrarLista() {
         var exibir = 0
+        mensagem.innerHTML = ''
         if (exibir == 0) {
             for (var contador = 0; contador < beneficios.length; contador++) {
             mensagem.innerHTML += `${contador + 1} - ${beneficios[contador]}<br>`
@@ -137,17 +138,15 @@
 
 function mostrarLista2() {
         var exibir2 = 0
+        mensagem2.innerHTML =''
         if (exibir2 == 0) {
             for (var contador = 0; contador < segurancas.length; contador++) {
-            mensagem2.innerHTML += `${contador + 1} - ${segurancas[contador]}<br>`
-            exibir2++    
+                mensagem2.innerHTML += `${contador + 1} - ${segurancas[contador]}<br>`
+                exibir2++    
             }
-        } else {
-
+        } else if (exibir2 > 0) {
+            
         }
-        
-
-
         
     }
 

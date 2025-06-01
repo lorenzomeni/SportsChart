@@ -24,7 +24,7 @@ body {
     background-color: #1e2d2f;
     padding: 2rem;
     border-radius: 10px;
-    width: 40%;
+    width: 30vw;
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -35,7 +35,7 @@ h2, h3 {
 }
 
 select, input {
-    width: 100%;
+    width: 15vw;
     padding: 0.75rem;
     border-radius: 10px;
     border: none;

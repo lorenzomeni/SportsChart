@@ -105,6 +105,8 @@ body {
 
 #mensagem, #mensagem2 {
     font-size: large;
+    margin-top: 2vh;
+    justify-content: center;
 }
 
 .card {

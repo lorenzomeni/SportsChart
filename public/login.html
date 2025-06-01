@@ -21,10 +21,6 @@
       <h1 class="titulo"><span style="color: #20cd8d;">Sports</span>Charts<span style="color: #20cd8d;">.</span></h1>
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicio</a>
-        </li>
-        <li>|</li>
-        <li>
           <a href="#">Login</a>
         </li>
         <li class="agora">
@@ -67,7 +63,7 @@
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
           </div>
-        <button class="botao" onclick="cadastrar()">Cadastrar</button>
+        <button class="botao" onclick="entrar()">Entrar</button>
         <a href="cadastro.html">Inscreva-se</a>
         </div>
 
@@ -122,10 +118,9 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location.href = "./public/index.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
