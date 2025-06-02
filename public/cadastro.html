@@ -67,10 +67,6 @@
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
           </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-        </div>
         <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -98,22 +94,22 @@
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var idUsuarioVincular
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      senhaVar == "" 
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      alert('Preencha todos os dados corretamente')
 
       finalizarAguardar();
       return false;
+    } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1 || emailVar.indexOf('@') > emailVar.lastIndexOf('.') || emailVar.indexOf('@') == 0 || emailVar.lastIndexOf('.') == emailVar.length - 1) {
+      alert('Este endereço de e-mail não é válido.')
+    } else if (senhaVar.length < 6) {
+      alert('Esta senha é inválida')
     } else {
       setInterval(sumirMensagem, 5000);
     }

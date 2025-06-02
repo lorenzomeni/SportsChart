@@ -2,16 +2,16 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SportsCharts. | Login</title>
+  <title>SportsCharts. | Login</title>
 
-    <script src="./js/sessao.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/estilologin.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="./js/sessao.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/estilologin.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
@@ -29,48 +29,48 @@
       </ul>
     </div>
   </div>
-    <!-- Header fim -->
+  <!-- Header fim -->
 
-    <div class="login">
+  <div class="login">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
     </div>
     <div class="container">
-        <div class="esquerda">
-            <h1>
-                <span class="verde">Sports</span><span class="branco">Charts.</span>
-            </h1>
-            <p>
-                <span class="verde">Entenda</span> o que o<br>
-                <span class="verde">mundo</span> dos<br>
-                <span class="verde">esportes</span> assiste<br>
-                através de<br>
-                <span class="verde">gráficos</span>.
-            </p>
-    </div>
+      <div class="esquerda">
+        <h1>
+          <span class="verde">Sports</span><span class="branco">Charts.</span>
+        </h1>
+        <p>
+          <span class="verde">Entenda</span> o que o<br>
+          <span class="verde">mundo</span> dos<br>
+          <span class="verde">esportes</span> assiste<br>
+          através de<br>
+          <span class="verde">gráficos</span>.
+        </p>
+      </div>
 
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo de volta!</h2><br>
-        <div class="formulario">
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Bem-vindo de volta!</h2><br>
+          <div class="formulario">
+            <div class="campo">
+              <span>E-mail:</span>
+              <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            </div>
+            <div class="campo">
+              <span>Senha:</span>
+              <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <button class="botao" onclick="entrar()">Entrar</button>
+            <a href="cadastro.html">Inscreva-se</a>
           </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-        <button class="botao" onclick="entrar()">Entrar</button>
-        <a href="cadastro.html">Inscreva-se</a>
+
+          <div id="div_erros_login"></div>
         </div>
-
-        <div id="div_erros_login"></div>
       </div>
     </div>
-  </div>
 </body>
 
 </html>
@@ -78,62 +78,66 @@
 <script>
 
 
-    function entrar() {
+  function entrar() {
 
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            alert('Preencha todos os campos')
-            finalizarAguardar();
-            return false;
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    function redirecionar() {
-                      window.location = "index.html"
-                    }
-                    redirecionar()
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+    if (emailVar == "" || senhaVar == "") {
+      alert('Preencha todos os campos')
+      finalizarAguardar();
+      return false;
+    } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1 || emailVar.indexOf('@') > emailVar.lastIndexOf('.') || emailVar.indexOf('@') == 0 || emailVar.lastIndexOf('.') == emailVar.length - 1) {
+      alert('Este endereço de e-mail não é válido.')
+    } else if (senhaVar.length < 6) {
+      alert('Esta senha é inválida')
     }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+          function redirecionar() {
+            window.location = "index.html"
+          }
+          redirecionar()
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
 
 </script>
