@@ -111,11 +111,30 @@
         }
     }
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
+    const idusuario = sessionStorage.ID_USUARIO;
+
+
+    // na hora de inserir o dataset do usuario usar dadousuario.nomedocampo
+    // na hora de inserir o dataset do esporte usar dadoesportes.nomedocampo
+    // na hora de inserir o nome da label com o nome do esporte do usuario usar dadosEsportes.nome
+    function plotarDadosGrafico() {
+        fetch(`/puxarDados/puxarDadosUsuario/${idusuario}`, {cache:"no-store"})
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar dados')
+                    return response.json();
+                
+            })
+            .then(respostas => {
+                if (respostas.length === 0) {
+                    alert('Nenhum dado encontrado.');
+                    return;
+                }
+                const dadoUsuario = dadosEnviados[0].usuario;
+                const nomeEsportes = dadosEsportes.nome || 'esportes'
+                const dadosEsportes = dadosEnviados[0].esporte
+            })
     }
+    // PRECISO MONTAR ESTRUTURA DO GRAFICO
 
     function exibirAquario(idAquario) {
         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);

@@ -27,7 +27,7 @@ CREATE TABLE esporte (
 );
 
 CREATE TABLE media (
-	fkUsario INT,
+	fkUsuario INT,
 	fkEsporte INT, 
 	mediaUsuario INT,
 	media_Telespectadores INT,
