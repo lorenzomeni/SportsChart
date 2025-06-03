@@ -10,9 +10,7 @@
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -53,12 +51,9 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
+           <div id="containerSelect">
+            <select id="selectEsporte"></select>
+           </div>
             <div id="graficos">
             </div>
         </div>
@@ -70,6 +65,35 @@
 </html>
 
 <script>
+
+var selectEsporte = document.getElementById('selectEsporte')
+  function pegarEsportes(){
+    fetch("/esportes/pegarEsporte", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+      
+      if (resposta.ok) {
+          resposta.json().then(json =>{
+            for(let i = 0; i < json.length; i++){
+              selectEsporte.innerHTML += `
+                 <option value="${json[i].idEsporte}">${json[i].nomeEsporte}</option>
+              `
+            }
+          })
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  pegarEsportes()
+
 
     function carregarNomeUsuario() {
 

@@ -10,14 +10,6 @@ CREATE DATABASE SportsCharts;
 
 USE SportsCharts;
 
-CREATE TABLE usuario (
-	idusuario INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(45),
-	email VARCHAR(45) UNIQUE,
-	senha VARCHAR(45),
-	qtdHorasU INT
-);
-
 CREATE TABLE esporte (
 	idesporte INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
@@ -26,12 +18,35 @@ CREATE TABLE esporte (
 	qtdHorasT INT
 );
 
+select idesporte as idEsporte, nome as nomeEsporte from esporte;
+
+CREATE TABLE usuario (
+	idusuario INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(45),
+	email VARCHAR(45) UNIQUE,
+	senha VARCHAR(45),
+    FkEsporte INT NOT NULL,
+	qtdHorasU INT NOT NULL,
+    CONSTRAINT fkEsporteUsuario
+    FOREIGN KEY (fkEsporte) REFERENCES esporte(idesporte)
+);
+select * from usuario;
+
 CREATE TABLE media (
 	fkUsuario INT,
 	fkEsporte INT, 
 	mediaUsuario INT,
 	media_Telespectadores INT,
-	CONSTRAINT PRIMARY KEY (fkUsuario, fkEsporte),
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(idusuario),
+	CONSTRAINT pkComposta PRIMARY KEY (fkUsuario, fkEsporte),
+	CONSTRAINT FkUsuarioMedia
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idusuario),
+    CONSTRAINT FkEsporteMedia
 	FOREIGN KEY (fkEsporte) REFERENCES esporte(idesporte)
 );
+
+INSERT INTO esporte VALUES
+(default,'Futebol', default,);
+
+
+
+
