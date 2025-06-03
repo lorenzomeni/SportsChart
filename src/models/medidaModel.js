@@ -1,27 +1,24 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idusuario, limite_linhas) {
+function buscarUltimasMedidas(fkusuario) {
 
-    var instrucaoSql = `SELECT 
-        qtdTelespectadores as telespectadores, 
-        nomeEsporte as esporte,
-                    FROM esporte
-                    WHERE  = ${idusuario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `select u.nome, e.nome, u.qtdHorasU from usuario as u
+join media as m on m.fkUsuario = u.idusuario
+join esporte as e on e.idesporte = m.fkEsporte;
+    where m.fkUsuario = ${fkusuario} `
+        ;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idusuario) {
+function buscarMedidasEmTempoReal(fkusuario) {
 
-    var instrucaoSql = `SELECT 
-        qtdHoras as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idusuario} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `select u.nome, e.nome, u.qtdHorasU from usuario as u
+join media as m on m.fkUsuario = u.idusuario
+join esporte as e on e.idesporte = m.fkEsporte;
+    where m.fkUsuario = ${fkusuario} `
+        ;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

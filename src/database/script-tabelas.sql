@@ -19,7 +19,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE esporte (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	idesporte INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
 	descricao VARCHAR(50),
 	qtdTelespectadores INT,
@@ -32,6 +32,6 @@ CREATE TABLE media (
 	mediaUsuario INT,
 	media_Telespectadores INT,
 	CONSTRAINT PRIMARY KEY (fkUsuario, fkEsporte),
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
-	FOREIGN KEY (fkEsporte) REFERENCES esporte(id)
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idusuario),
+	FOREIGN KEY (fkEsporte) REFERENCES esporte(idesporte)
 );

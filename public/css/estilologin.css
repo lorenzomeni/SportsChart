@@ -78,11 +78,22 @@ body {
     margin-bottom: 1rem;
 }
 
+
+
 .campo span {
     display: block;
     color: #20cd8d;
     font-weight: 700;
     margin-bottom: 0.5rem;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 1vh;
 }
 
 input {

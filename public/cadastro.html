@@ -67,6 +67,15 @@
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
           </div>
+            <span>Qual esporte você mais assite</span>
+            <label for="lista-esportes"></label>
+              <select name="escolher-esportes" id="esporte_input">
+               
+              </select>
+          <div class="campo">
+            <span>Quantas horas por dia você assiste esse esporte?</span>
+            <input id="horas_input" type="number" placeholder="ex. 3">
+          </div>
         <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -82,9 +91,36 @@
 </html>
 
 <script>
-
+  var selectEsporte = document.getElementById('esporte_input')
   // Array para armazenar empresas cadastradas para validação de código de ativação 
   let listaUsuariosCadastrados = [];
+
+  function pegarEsportes(){
+    fetch("/esportes/pegarEsporte", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+      
+      if (resposta.ok) {
+          resposta.json().then(json =>{
+            for(let i = 0; i < json.length; i++){
+              selectEsporte.innerHTML += `
+                 <option value="${json[i].idEsporte}">${json[i].nomeEsporte}</option>
+              `
+            }
+          })
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  pegarEsportes()
 
   function cadastrar() {
     // aguardar();
@@ -94,6 +130,8 @@
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
+    var esporteVar = esporte_input.value;
+    var horasVar = horas_input.value; 
     var idUsuarioVincular
 
     // Verificando se há algum campo em branco
@@ -110,7 +148,12 @@
       alert('Este endereço de e-mail não é válido.')
     } else if (senhaVar.length < 6) {
       alert('Esta senha é inválida')
+    } else if (esporteVar == 1|| esporteVar == 2 || esporteVar == 3 || esporteVar == 4) {
+      
     } else {
+      alert('Escolha um dos esportes disponíveis')
+    }
+    {
       setInterval(sumirMensagem, 5000);
     }
 
@@ -139,7 +182,9 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idUsuarioVincularServer: idUsuarioVincular
+        idUsuarioVincularServer: idUsuarioVincular,
+        esporteServer: esporteVar,
+        horasServer: horasVar
       }),
     })
       .then(function (resposta) {
@@ -169,7 +214,7 @@
     return false;
   }
 
-  // Listando usuarios cadastrados (ARRUMAR)
+  // Listando usuarios cadastrados
   function listar() {
     fetch("/empresas/listar", {
       method: "GET",

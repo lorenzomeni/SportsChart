@@ -13,13 +13,7 @@
     
     <div class="container">
         <h3>Qual esporte você mais assiste?</h3>
-        <label for="lista-esportes"></label>
-        <select name="escolher-esportes" id="lista-esportes">
-            <option value="basquete">Basquete</option>
-            <option value="futebol">Futebol</option>
-            <opttion value="volei">Vôlei</option>
-            <option value="criquete">Críquete</option>
-        </select>
+        
     </div>
 
     <div class="container">
@@ -31,6 +25,18 @@
     <a href="index.html">Voltar</a>
 </body>
 </html>
-
+<script>
+    var qtdHoras = Number(qtd_horas_assistidas.value)
+    var usuario = sessionStorage.ID_USUARIO
+    const select = document.getElementById("lista-esportes");
+    const valorSelecionado = select.value;
+    function avancar() {
+        if ( qtdHoras == "" || qtdHoras < 1) {
+            alert("Preencha todos os campos")
+        } else {
+            window.location = "dashboard.html"
+        }
+    }
+</script>
 
 <!-- A FAZER: DECLARAR NO BANCO AS OPCOES DE ESPORTES, FAZER UM FETCH PARA ENVIAR O ID PARA A FK DO ESPORTE E MANDAR AS HORAS PARA O USUARIO INSERIR, DECLARAR O ID DO USUARIO QUE ESTA SALVO NO SESSION.STORAGE PARA UMA VARIÁVEL E MANDAR O ID DELE. -->

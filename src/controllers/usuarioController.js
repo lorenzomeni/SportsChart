@@ -25,7 +25,6 @@ function autenticar(req, res) {
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
                             senha: resultadoAutenticar[0].senha
-
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -50,6 +49,9 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var horas = req.body.horasServer;
+    var fkesporte = req.body.esporteServer;
+
 
 
     // Faça as validações dos valores
@@ -59,10 +61,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    } else if (horas == undefined) {
+        res.status(400).send("Suas horas estão undefined")
+    }else if (fkesporte == undefined) {
+        res.status(400).send("Seu esporte está undefined")
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, email, senha, fkesporte, horas)
             .then(
                 function (resultado) {
                     res.json(resultado);
