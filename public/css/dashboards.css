@@ -14,11 +14,10 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95vw; 
     background-color: #1e2d2f;
-    padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px #20cd8d;
+    box-shadow: 0 0 15px #20cd8d;
     text-align: center;
     height: 85vh;
 }
@@ -30,17 +29,45 @@ body {
     margin-bottom: 15px;
 }
 
+/* KPIs */
+.kpis {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.kpi {
+    background-color: #232b2f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #20cd8d;
+    text-align: center;
+    width: 30%;
+}
+
+.kpi h3 {
+    color: #20cd8d;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.kpi p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Gráficos */
 .graficos {
     display: flex;
-    flex-direction: row; /* Agora os gráficos estão um ao lado do outro */
+    flex-direction: row; /* Mantém os gráficos um ao lado do outro */
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Mantém um bom espaçamento */
+    gap: 10vw; /* ✅ Mais espaçamento entre gráficos */
 }
 
 canvas {
-    width: 60% !important; /* Gráficos um pouco maiores */
-    max-width: 450px;
+    width: 55vh !important; /* ✅ Gráficos levemente maiores */
+    max-width: 520vw;
     height: auto !important;
 }
 
@@ -50,7 +77,7 @@ canvas {
     left: 0;
     z-index: 999;
     height: 100vh;
-    width: 15%;
+    width: 12%; /* ✅ Reduzindo sidebar para dar mais espaço à dashboard */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,9 +88,9 @@ canvas {
 }
 
 .dash {
-    width: 85%;
+    width: 100vw 100vh; /* ✅ Dashboard mais expandida */
     height: 100vh;
-    margin-left: 15%;
+    margin-left: 12%;
     display: flex;
     justify-content: center;
     align-items: center;

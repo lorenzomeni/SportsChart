@@ -2,192 +2,158 @@
 <html lang="pt-br">
 
 <head>
-  <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AquaTech | Dashboards</title>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsCharts | Dashboards</title>
 
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <script src="../js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./../css/dashboards.css">
-  <script src="../js/sessao.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-
-  <!-- scripts do Chart.js - 2022-1 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!--FONT AWESOME-->
-  <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
-
-  <div class="janela">
-    <div class="header-left">
-      <h1>SportsCharts</h1>
-      <div class="hello">
-        <h3 id="bemVindoDash">Olá ! </h3>
-      </div>
-
-      <div class="btn-nav">
-
-        <h3>Gráficos</h3>
-
-      </div>
-
-      <div class="btn-logout" onclick="limparSessao()">
-        <h3>Sair</h3>
-      </div>
-    </div>
-
-    <div class="dash">
-      <div class="container">
-        <h1 class="tituloGraficos">Telespectadores de Esportes em Bilhões</h1>
-        <div class="graficos">
-          <canvas id="graficoPizza"></canvas>
-          <canvas id="graficoBarras"></canvas>
+    <div class="janela">
+        <div class="header-left">
+            <h1>SportsCharts</h1>
+            <div class="hello">
+                <h3 id="bemVindoDash">Olá!</h3>
+            </div>
+            <div class="btn-nav">
+                <h3>Gráficos</h3>
+            </div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+            <div class="voltar">
+              <h3>Voltar</h3>
+            </div>
         </div>
-      </div>
+        <!--ARRUMAR ESSA SESSÃO-->
+
+        <div class="dash">
+            <div class="container">
+                <h1 class="tituloGraficos">Telespectadores de Esportes em Bilhões</h1>
+
+                <!-- KPIs -->
+                <div class="kpis">
+                    <div class="kpi">
+                        <h3>Total de Telespectadores</h3>
+                        <p id="totalTelespectadores">-</p>
+                    </div>
+                    <div class="kpi">
+                        <h3>Média de Horas Assistidas</h3>
+                        <p id="mediaHorasAssistidas">-</p>
+                    </div>
+                    <div class="kpi">
+                        <h3>Esporte Mais Popular</h3>
+                        <p id="esportePopular">-</p>
+                    </div>
+                </div>
+
+                <div class="graficos">
+                    <canvas id="graficoPizza"></canvas>
+                    <canvas id="graficoBarras"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
+    <script>
+        const dadosEsportes = {
+            labels: ["Futebol", "Vôlei", "Críquete", "Basquete"],
+            datasets: [{
+                data: [4, 1, 2.5, 2], 
+                backgroundColor: ["#20cd8d", "#1e2d2f", "#ff5e5e", "#ffee58"],
+                borderColor: "#ffffff",
+                borderWidth: 2
+            }]
+        };
 
-</body>
+        // KPIs
+        const totalTelespectadores = dadosEsportes.datasets[0].data.reduce((a, b) => a + b, 0);
+        document.getElementById('totalTelespectadores').innerText = `${totalTelespectadores} bilhões`;
 
-</html>
+        const mediaHorasAssistidas = (30 + 15 + 25 + 20) / 4;
+        document.getElementById('mediaHorasAssistidas').innerText = `${mediaHorasAssistidas} horas/mês`;
 
-<script>
+        const indicePopular = dadosEsportes.datasets[0].data.indexOf(Math.max(...dadosEsportes.datasets[0].data));
+        document.getElementById('esportePopular').innerText = dadosEsportes.labels[indicePopular];
 
- const ctxPizza = document.getElementById('graficoPizza').getContext('2d');
-const ctxBarras = document.getElementById('graficoBarras').getContext('2d');
+        // Gráficos do Chart.js
+        const ctxPizza = document.getElementById('graficoPizza').getContext('2d');
+        const ctxBarras = document.getElementById('graficoBarras').getContext('2d');
 
-const dadosEsportes = {
-    labels: ["Futebol", "Vôlei", "Críquete", "Basquete"],
-    datasets: [{
-        data: [4, 1, 2.5, 2], 
-        backgroundColor: ["#20cd8d", "#1e2d2f", "#ff5e5e", "#ffee58"],
-        borderColor: "#ffffff",
-        borderWidth: 2
-    }]
-};
-
-// Gráfico de Pizza
-new Chart(ctxPizza, {
-    type: 'pie',
-    data: dadosEsportes,
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                labels: {
-                    color: "white",
-                    font: {
-                        size: 16
+        new Chart(ctxPizza, {
+            type: 'pie',
+            data: dadosEsportes,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "white",
+                            font: {
+                                size: 16
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
-});
+        });
 
-// Gráfico de Barras - Média de horas assistidas por mês
-new Chart(ctxBarras, {
-    type: 'bar',
-    data: {
-        labels: ["Futebol", "Vôlei", "Críquete", "Basquete"],
-        datasets: [{
-            label: "Média de horas assistidas por mês",
-            data: [30, 15, 25, 20], // Média de horas fictícia
-            backgroundColor: ["#20cd8d", "#1e2d2f", "#ff5e5e", "#ffee58"],
-            borderColor: "#ffffff",
-            borderWidth: 2
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                labels: {
-                    color: "white",
-                    font: {
-                        size: 16
-                    }
-                }
+        new Chart(ctxBarras, {
+            type: 'bar',
+            data: {
+                labels: ["Futebol", "Vôlei", "Críquete", "Basquete"],
+                datasets: [{
+                    label: "Média de horas assistidas por mês",
+                    data: [30, 15, 25, 20],
+                    backgroundColor: ["#20cd8d", "#1e2d2f", "#ff5e5e", "#ffee58"],
+                    borderColor: "#ffffff",
+                    borderWidth: 2
+                }]
             },
-            title: {
-                display: true,
-                text: "Média de horas assistidas dos telespectadores (Mês)",
-                color: "white",
-                font: {
-                    size: 20,
-                    weight: "bold"
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: "white",
-                    font: {
-                        size: 14
-                    }
-                }
-            },
-            y: {
-                ticks: {
-                    color: "white",
-                    font: {
-                        size: 14
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "white",
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "Média de horas assistidas dos telespectadores (Mês)",
+                        color: "white",
+                        font: {
+                            size: 20,
+                            weight: "bold"
+                        }
                     }
                 },
-                beginAtZero: true
+                scales: {
+                    x: { ticks: { color: "white", font: { size: 14 } } },
+                    y: { ticks: { color: "white", font: { size: 14 } }, beginAtZero: true }
+                }
             }
+        });
+
+        function carregarNomeUsuario() {
+            var nome = sessionStorage.NOME_USUARIO;
+            var [primeiroNome] = nome.split(' ');
+            document.getElementById('bemVindoDash').innerText = `Olá, ${nome}!`;
         }
-    }
-});
-
-  var selectEsporte = document.getElementById('selectEsporte')
-  function pegarEsportes() {
-    fetch("/esportes/pegarEsporte", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          resposta.json().then(json => {
-            for (let i = 0; i < json.length; i++) {
-              selectEsporte.innerHTML += `
-                 <option value="${json[i].idEsporte}">${json[i].nomeEsporte}</option>
-              `
-            }
-          })
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  pegarEsportes()
-
-
-  function carregarNomeUsuario() {
-
-    var nome = sessionStorage.NOME_USUARIO
-    console.log()
-    var [primeiroNome] = nome.split(' ');
-
-    bemVindoDash.innerHTML = `Olá, ${nome}!`
-  }
-  carregarNomeUsuario()
-</script>
+        carregarNomeUsuario();
+    </script>
+</body>
+</html>
