@@ -71,7 +71,7 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(nome, email, senha, fkesporte, horas)
             .then(
                 function (resultado) {
-                    res.json(resultado);
+                    res.json({idusuario:resultado.insertId});
                 }
             ).catch(
                 function (erro) {

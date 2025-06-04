@@ -122,6 +122,8 @@
 
   pegarEsportes()
 
+  var idusuario = 0
+
   function cadastrar() {
     // aguardar();
 
@@ -172,47 +174,55 @@
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+    },
+    body: JSON.stringify({
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
         idUsuarioVincularServer: idUsuarioVincular,
         esporteServer: esporteVar,
         horasServer: horasVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+    }),
+})
+.then(function (resposta) {
+    console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
+    if (resposta.ok) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          mensagem_erro.innerHTML =
-            `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
-
-          setTimeout(() => {
+        setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
+        return resposta.json(); 
+    } else {
+        resposta.text().then(texto => console.error("Erro no cadastro:", texto));
+    }
+})
+.then(json => { 
+    console.log(json);
+    console.log(JSON.stringify(json));
 
-    return false;
-  }
+    localStorage.setItem("idUsuario", json.idusuario); 
+    tratarMedia()
+})
+.catch(function (erro) {
+    console.log(`#ERRO: ${erro}`);
+    finalizarAguardar();
+});
+
+return false;
+}
+
+function tratarMedia(){
+  var horasvar = horas_input.value;
+  horasvarTratada = horasvar*30
+  localStorage.setItem("idUsuario", json.idusuario);
+}
 
   // Listando usuarios cadastrados
   function listar() {

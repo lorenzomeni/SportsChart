@@ -13,7 +13,6 @@ USE SportsCharts;
 CREATE TABLE esporte (
 	idesporte INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
-	descricao VARCHAR(50),
 	qtdTelespectadores INT,
 	qtdHorasT INT
 );
@@ -44,8 +43,11 @@ CREATE TABLE media (
 	FOREIGN KEY (fkEsporte) REFERENCES esporte(idesporte)
 );
 
-INSERT INTO esporte VALUES
-(default,'Futebol', default,);
+INSERT INTO esporte (nome, qtdTelespectadores, qtdHorasT) VALUES
+(default,'Futebol', 4, 2);
+(default,'Criquete', 2.5, 3);
+(default,'Basquete', 2, 2.5);
+(default,'Tênis', 1, 1);
 
 
 
